@@ -79,21 +79,16 @@ export default function SocialSection() {
   return (
     <section
       id="social"
-      style={{
-        position: "relative",
-        padding: "8rem 0",
-        background: "#050508",
-        overflow: "hidden",
-      }}
+      className="relative py-32 bg-void overflow-hidden"
     >
-      <div style={{ position: "relative", maxWidth: "1280px", margin: "0 auto", padding: "0 2rem" }}>
+      <div className="container-max container-px">
         {/* Header */}
         <FadeUp>
-          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <div className="section-tag" style={{ justifyContent: "center", display: "flex" }}>Follow the Journey</div>
-            <h2 className="section-title" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", color: "#fff" }}>
+          <div className="text-center mb-16">
+            <div className="section-tag flex justify-center">Follow the Journey</div>
+            <h2 className="section-title text-4xl md:text-5xl text-white">
               Stay{" "}
-              <span style={{ color: "#00D4FF", textShadow: "0 0 20px rgba(0,212,255,0.5)" }}>
+              <span className="neon-blue">
                 Connected
               </span>
             </h2>
@@ -103,12 +98,7 @@ export default function SocialSection() {
         {/* Social platform cards */}
         <FadeUp delay={0.1}>
           <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-              gap: "1rem",
-              marginBottom: "4rem",
-            }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16"
           >
             {socialPlatforms.map((platform) => (
               <motion.a

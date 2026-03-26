@@ -53,38 +53,15 @@ export default function Navbar() {
           : "none",
       }}
     >
-      <div
-        style={{
-          maxWidth: "1280px",
-          margin: "0 auto",
-          padding: "0 2rem",
-          height: "72px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
+      <div className="max-w-5xl mx-auto px-8 h-[72px] flex items-center justify-between">
         {/* Logo */}
         <a
           href="#"
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-          style={{ textDecoration: "none" }}
+          className="no-underline"
         >
-          <span
-            style={{
-              fontFamily: "'Orbitron', sans-serif",
-              fontWeight: 900,
-              fontSize: "1.3rem",
-              letterSpacing: "0.15em",
-              color: "#fff",
-            }}
-          >
-            <span
-              style={{
-                color: "#00D4FF",
-                textShadow: "0 0 15px rgba(0,212,255,0.7)",
-              }}
-            >
+          <span className="font-orbitron font-black text-xl tracking-widest text-white">
+            <span className="neon-blue">
               DJMASHFRANKIE
             </span>
           </span>
@@ -92,12 +69,7 @@ export default function Navbar() {
 
         {/* Desktop nav links */}
         <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "2.5rem",
-          }}
-          className="hidden md:flex"
+          className="hidden md:flex items-center gap-10"
         >
           {navLinks.map((link) => (
             <a
