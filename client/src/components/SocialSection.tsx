@@ -1,0 +1,305 @@
+/**
+ * DJ NEXUS — SocialSection
+ * Midnight Luxe: Instagram feed preview grid, social platform links
+ * with neon hover effects, follower counts
+ */
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import { Instagram, Youtube, Music2, ExternalLink } from "lucide-react";
+
+function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, delay, ease: "easeOut" }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+const socialPlatforms = [
+  {
+    name: "Instagram",
+    handle: "@djmashfrankie",
+    followers: "5K",
+    icon: <Instagram size={24} />,
+    color: "#E1306C",
+    gradient: "linear-gradient(135deg, #833AB4, #E1306C, #F77737)",
+    url: "https://instagram.com/?igsh=MWhvbTM3Zc2cDRicw==",
+  },
+  {
+    name: "TikTok",
+    handle: "@djmashfrankie",
+    followers: "12k",
+    icon: (
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z" />
+      </svg>
+    ),
+    color: "#69C9D0",
+    gradient: "linear-gradient(135deg, #010101, #69C9D0)",
+    url: "https://tiktok.com/djmashfrankie",
+  },
+  {
+    name: "YouTube",
+    handle: "@djmashfrankie",
+    followers: "50k",
+    icon: <Youtube size={24} />,
+    color: "#FF0000",
+    gradient: "linear-gradient(135deg, #FF0000, #cc0000)",
+    url: "https://youtube.com/@djmashfrankie_kif?si=INjys_nHIb0Xegl3",
+  },
+  {
+    name: "Spotify",
+    handle: "Djmashfrankie",
+    followers: "89K",
+    icon: <Music2 size={24} />,
+    color: "#1DB954",
+    gradient: "linear-gradient(135deg, #1DB954, #158a3e)",
+    url: "https://spotify.com",
+  },
+];
+
+const instagramPosts = [
+  "/pics/SaveClip.App_640317656_18079404044587486_9172159331396000391_n.jpg.webp",
+  "/pics/SaveClip.App_641079496_18079426913587486_6351340567961635320_n.jpg.webp",
+  "/pics/SaveClip.App_640979854_18079404053587486_2152144439873232625_n.jpg.webp",
+  "/pics/IMG-20260326-WA0003.jpg",
+  "/pics/IMG-20260326-WA0004.jpg",
+  "/pics/SaveClip.App_641177434_18079486841587486_1301773692130514448_n.jpg.webp",
+];
+
+export default function SocialSection() {
+  return (
+    <section
+      id="social"
+      style={{
+        position: "relative",
+        padding: "8rem 0",
+        background: "#050508",
+        overflow: "hidden",
+      }}
+    >
+      <div style={{ position: "relative", maxWidth: "1280px", margin: "0 auto", padding: "0 2rem" }}>
+        {/* Header */}
+        <FadeUp>
+          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+            <div className="section-tag" style={{ justifyContent: "center", display: "flex" }}>Follow the Journey</div>
+            <h2 className="section-title" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", color: "#fff" }}>
+              Stay{" "}
+              <span style={{ color: "#00D4FF", textShadow: "0 0 20px rgba(0,212,255,0.5)" }}>
+                Connected
+              </span>
+            </h2>
+          </div>
+        </FadeUp>
+
+        {/* Social platform cards */}
+        <FadeUp delay={0.1}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+              gap: "1rem",
+              marginBottom: "4rem",
+            }}
+          >
+            {socialPlatforms.map((platform) => (
+              <motion.a
+                key={platform.name}
+                href={platform.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ y: -6, scale: 1.02 }}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  padding: "2rem 1rem",
+                  borderRadius: "12px",
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(255,255,255,0.07)",
+                  textDecoration: "none",
+                  transition: "all 0.3s ease",
+                  cursor: "pointer",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderColor = `${platform.color}44`;
+                  (e.currentTarget as HTMLElement).style.background = `${platform.color}0a`;
+                  (e.currentTarget as HTMLElement).style.boxShadow = `0 0 30px ${platform.color}22`;
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.07)";
+                  (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                }}
+              >
+                <div
+                  style={{
+                    width: "52px",
+                    height: "52px",
+                    borderRadius: "14px",
+                    background: platform.gradient,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#fff",
+                    marginBottom: "1rem",
+                    boxShadow: `0 4px 20px ${platform.color}44`,
+                  }}
+                >
+                  {platform.icon}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "'Orbitron', sans-serif",
+                    fontWeight: 800,
+                    fontSize: "1.4rem",
+                    color: "#fff",
+                    lineHeight: 1,
+                    marginBottom: "0.25rem",
+                  }}
+                >
+                  {platform.followers}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "'Syne', sans-serif",
+                    fontWeight: 700,
+                    fontSize: "0.75rem",
+                    color: "rgba(255,255,255,0.6)",
+                    marginBottom: "0.25rem",
+                  }}
+                >
+                  {platform.name}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.7rem",
+                    color: platform.color,
+                    opacity: 0.8,
+                  }}
+                >
+                  {platform.handle}
+                </div>
+                <ExternalLink
+                  size={12}
+                  style={{
+                    position: "absolute",
+                    top: "0.75rem",
+                    right: "0.75rem",
+                    color: "rgba(255,255,255,0.2)",
+                  }}
+                />
+              </motion.a>
+            ))}
+          </div>
+        </FadeUp>
+
+        {/* Instagram feed preview */}
+        <FadeUp delay={0.2}>
+          <div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginBottom: "1.5rem",
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                <Instagram size={20} style={{ color: "#E1306C" }} />
+                <span
+                  style={{
+                    fontFamily: "'Syne', sans-serif",
+                    fontWeight: 700,
+                    fontSize: "0.9rem",
+                    color: "rgba(255,255,255,0.7)",
+                  }}
+                >
+                  @djmashfrankie on Instagram
+                </span>
+              </div>
+              <a
+                href="https://instagram.com"
+                target="https://instagram.com/?igsh=MWhvbTM3Zc2cDRicw=="
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: "'Syne', sans-serif",
+                  fontWeight: 700,
+                  fontSize: "0.7rem",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "#E1306C",
+                  textDecoration: "none",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.35rem",
+                }}
+              >
+                View All <ExternalLink size={12} />
+              </a>
+            </div>
+
+            <div
+              style={{
+                display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
+              gap: "0.5rem",
+            }}
+            >
+              {instagramPosts.map((src, i) => (
+                <motion.div
+                  key={i}
+                  whileHover={{ scale: 1.05 }}
+                  style={{
+                    aspectRatio: "1",
+                    overflow: "hidden",
+                    borderRadius: "6px",
+                    cursor: "pointer",
+                    position: "relative",
+                  }}
+                >
+                  <img
+                    src={src}
+                    alt={`Instagram post ${i + 1}`}
+                    loading="lazy"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      transition: "transform 0.4s ease",
+                    }}
+                  />
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "linear-gradient(135deg, rgba(225,48,108,0.5), rgba(131,58,180,0.5))",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Instagram size={20} color="#fff" />
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </FadeUp>
+      </div>
+    </section>
+  );
+}
