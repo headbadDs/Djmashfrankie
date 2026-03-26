@@ -683,4 +683,198 @@
     transform: translateY(-8px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 212, 255, 0.1);
   }
+
+  /* === Social Section Utilities === */
+  .social-card {
+    @apply relative flex flex-col items-center p-4 rounded-lg bg-white/3 border border-white/7 no-underline transition-all duration-300 cursor-pointer;
+  }
+
+  .social-card:hover {
+    border-color: rgba(0, 212, 255, 0.3);
+  }
+
+  .social-icon-box {
+    @apply w-14 h-14 rounded-3xl flex items-center justify-center text-white mb-4 flex-shrink-0 transition-all duration-300;
+    box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2);
+  }
+
+  .social-followers {
+    @apply font-orbitron font-black text-xl text-white leading-none mb-1;
+  }
+
+  .social-platform {
+    @apply font-syne font-bold text-xs text-white/60 mb-1;
+  }
+
+  .social-handle {
+    @apply font-dm-sans text-xs opacity-80;
+  }
+
+  .social-external-icon {
+    @apply absolute top-3 right-3;
+  }
+
+  /* Instagram grid */
+  .instagram-header {
+    @apply flex items-center justify-between mb-6;
+  }
+
+  .instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .instagram-post {
+    @apply relative aspect-square overflow-hidden rounded-md cursor-pointer;
+  }
+
+  .instagram-overlay {
+    @apply absolute inset-0 bg-gradient-to-br from-pink-600/50 to-purple-600/50 flex items-center justify-center;
+  }
+
+  /* === Events Section Utilities === */
+  .events-filter-group {
+    @apply flex flex-wrap gap-2 mb-10;
+  }
+
+  .event-filter-btn {
+    @apply px-4 py-2 rounded-full font-syne font-bold text-xs tracking-widest uppercase border transition-all duration-300;
+    border-color: rgba(139, 92, 246, 0.3);
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .event-filter-btn.active {
+    @apply bg-purple-600/30 border-purple-500 text-white;
+  }
+
+  .event-filter-btn:hover {
+    @apply border-purple-500 text-white;
+  }
+
+  .events-list {
+    @apply space-y-px;
+  }
+
+  .event-item {
+    @apply relative border-l-3 border-left-purple pl-6 py-6 px-6 bg-white/2 rounded-r-lg transition-all duration-300;
+    border-color: rgba(139, 92, 246, 0.3);
+  }
+
+  .event-item:hover {
+    border-color: rgba(139, 92, 246, 0.8);
+    background: rgba(139, 92, 246, 0.08);
+    padding-left: 1.75rem;
+  }
+
+  .event-time {
+    @apply font-orbitron text-xs text-purple-400 mb-2;
+  }
+
+  .event-title {
+    @apply font-syne font-bold text-white mb-2;
+  }
+
+  .event-details {
+    @apply space-y-1;
+  }
+
+  .event-detail-item {
+    @apply flex items-center gap-3 text-sm text-white/50;
+  }
+
+  .event-detail-icon {
+    @apply text-purple-400 flex-shrink-0;
+  }
+
+  /* === Gallery Section Utilities === */
+  .gallery-header {
+    @apply text-center mb-16;
+  }
+
+  .gallery-title {
+    @apply font-syne font-black text-white mb-4;
+  }
+
+  .gallery-title-accent {
+    @apply text-pink-500;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .gallery-item {
+    @apply relative aspect-square overflow-hidden rounded-lg cursor-pointer;
+  }
+
+  .gallery-image {
+    @apply w-full h-full object-cover transition-transform duration-500;
+  }
+
+  .gallery-item:hover .gallery-image {
+    @apply scale-105;
+  }
+
+  .gallery-overlay {
+    @apply absolute inset-0 bg-gradient-to-br from-pink-600/50 to-purple-600/50 flex items-center justify-center opacity-0 transition-opacity duration-300;
+  }
+
+  .gallery-item:hover .gallery-overlay {
+    @apply opacity-100;
+  }
+
+  /* === Navbar Utilities === */
+  .navbar-nav {
+    @apply fixed top-0 left-0 right-0 z-1000 transition-all duration-400;
+  }
+
+  .navbar-container {
+    @apply max-w-5xl mx-auto px-8 h-[72px] flex items-center justify-between;
+  }
+
+  .navbar-logo {
+    @apply font-orbitron font-black text-lg tracking-widest text-white;
+  }
+
+  .navbar-links {
+    @apply hidden md:flex items-center gap-8;
+  }
+
+  .navbar-link {
+    @apply nav-link;
+  }
+
+  .navbar-cta {
+    @apply hidden md:block px-6 py-2 rounded-lg font-syne font-bold text-sm tracking-widest uppercase border border-cyan-400 text-cyan-400 transition-all duration-300;
+  }
+
+  .navbar-cta:hover {
+    @apply bg-cyan-400/10;
+  }
+
+  .navbar-mobile-menu {
+    @apply md:hidden;
+  }
+
+  .navbar-menu-content {
+    @apply p-6 flex flex-col gap-6;
+  }
+
+  .navbar-menu-link {
+    @apply nav-link;
+  }
+
+  /* Neon purple for purple-themed components */
+  .neon-purple {
+    color: #8B5CF6;
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.8), 0 0 40px rgba(139, 92, 246, 0.4);
+  }
+
+  /* Utility for fixed z-index */
+  .z-9000 {
+    z-index: 9000;
+  }
 }

@@ -57,44 +57,20 @@ export default function EventsSection() {
   return (
     <section
       id="events"
-      style={{
-        position: "relative",
-        padding: "8rem 0",
-        background: "#050508",
-        overflow: "hidden",
-      }}
+      className="relative py-32 bg-void overflow-hidden"
     >
       {/* Ambient glow */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          right: 0,
-          width: "500px",
-          height: "500px",
-          background: "radial-gradient(circle, rgba(139,92,246,0.05) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-radial from-purple-900/10 to-transparent pointer-events-none" />
 
-      <div style={{ position: "relative", maxWidth: "1280px", margin: "0 auto", padding: "0 2rem" }}>
+      <div className="container-max container-px relative">
         {/* Header */}
         <FadeUp>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "flex-end",
-              justifyContent: "space-between",
-              marginBottom: "3rem",
-              flexWrap: "wrap",
-              gap: "1rem",
-            }}
-          >
+          <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
             <div>
               <div className="section-tag">Tour & Events</div>
-              <h2 className="section-title" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", color: "#fff" }}>
+              <h2 className="section-title text-5xl">
                 Upcoming{" "}
-                <span style={{ color: "#8B5CF6", textShadow: "0 0 20px rgba(139,92,246,0.5)" }}>
+                <span className="neon-purple">
                   Shows
                 </span>
               </h2>
@@ -106,7 +82,6 @@ export default function EventsSection() {
                 document.querySelector("#booking")?.scrollIntoView({ behavior: "smooth" });
               }}
               className="btn-neon-blue"
-              style={{ textDecoration: "none", fontSize: "0.75rem" }}
             >
               Request Private Event
             </a>
@@ -115,26 +90,12 @@ export default function EventsSection() {
 
         {/* Filter tabs */}
         <FadeUp delay={0.1}>
-          <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "2.5rem" }}>
+          <div className="events-filter-group">
             {filters.map((f) => (
               <button
                 key={f}
                 onClick={() => setActiveFilter(f)}
-                style={{
-                  fontFamily: "'Syne', sans-serif",
-                  fontWeight: 700,
-                  fontSize: "0.7rem",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  padding: "0.5rem 1.25rem",
-                  borderRadius: "2px",
-                  border: `1px solid ${activeFilter === f ? "#00D4FF" : "rgba(255,255,255,0.1)"}`,
-                  background: activeFilter === f ? "rgba(0,212,255,0.1)" : "transparent",
-                  color: activeFilter === f ? "#00D4FF" : "rgba(255,255,255,0.5)",
-                  cursor: "pointer",
-                  transition: "all 0.3s ease",
-                  boxShadow: activeFilter === f ? "0 0 15px rgba(0,212,255,0.15)" : "none",
-                }}
+                className={`event-filter-btn ${activeFilter === f ? "active" : ""}`}
               >
                 {f}
               </button>
@@ -143,22 +104,14 @@ export default function EventsSection() {
         </FadeUp>
 
         {/* Events list */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
+        <div className="events-list">
           {filtered.map((event, i) => (
             <FadeUp key={event.id} delay={i * 0.08}>
               <motion.div
                 whileHover={{ x: 8 }}
+                className="event-item"
                 style={{
-                  display: "grid",
-                  gridTemplateColumns: "80px 1fr auto",
-                  gap: "2rem",
-                  alignItems: "center",
-                  padding: "1.75rem 2rem",
-                  background: "rgba(255,255,255,0.02)",
-                  borderLeft: `3px solid ${typeColors[event.type] || "#00D4FF"}`,
-                  borderBottom: "1px solid rgba(255,255,255,0.04)",
-                  transition: "all 0.3s ease",
-                  cursor: "pointer",
+                  borderLeftColor: typeColors[event.type] || "#00D4FF",
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)";
@@ -168,115 +121,62 @@ export default function EventsSection() {
                 }}
               >
                 {/* Date block */}
-                <div style={{ textAlign: "center" }}>
+                <div className="text-center w-20 flex-shrink-0">
                   <div
+                    className="font-orbitron font-black text-3xl leading-tight"
                     style={{
-                      fontFamily: "'Orbitron', sans-serif",
-                      fontWeight: 900,
-                      fontSize: "2rem",
                       color: typeColors[event.type] || "#00D4FF",
-                      lineHeight: 1,
                       textShadow: `0 0 15px ${typeColors[event.type]}66`,
                     }}
                   >
                     {event.date.day}
                   </div>
-                  <div
-                    style={{
-                      fontFamily: "'Syne', sans-serif",
-                      fontWeight: 700,
-                      fontSize: "0.65rem",
-                      letterSpacing: "0.15em",
-                      color: "rgba(255,255,255,0.4)",
-                      textTransform: "uppercase",
-                    }}
-                  >
+                  <div className="font-syne font-bold text-xs tracking-widest text-white/40 uppercase">
                     {event.date.month}
                   </div>
-                  <div
-                    style={{
-                      fontFamily: "'DM Sans', sans-serif",
-                      fontSize: "0.65rem",
-                      color: "rgba(255,255,255,0.25)",
-                    }}
-                  >
+                  <div className="font-dm-sans text-xs text-white/25">
                     {event.date.year}
                   </div>
                 </div>
 
                 {/* Event info */}
                 <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.4rem" }}>
+                  <div className="flex items-center gap-3 mb-1">
                     <span
+                      className="font-orbitron text-xs tracking-widest uppercase px-2 py-1 rounded-sm border"
                       style={{
-                        fontFamily: "'Orbitron', sans-serif",
-                        fontSize: "0.55rem",
-                        letterSpacing: "0.15em",
-                        textTransform: "uppercase",
                         color: typeColors[event.type] || "#00D4FF",
-                        padding: "0.2rem 0.6rem",
-                        border: `1px solid ${typeColors[event.type]}44`,
-                        borderRadius: "2px",
+                        borderColor: `${typeColors[event.type]}44`,
                       }}
                     >
                       {event.type}
                     </span>
                   </div>
-                  <div
-                    style={{
-                      fontFamily: "'Syne', sans-serif",
-                      fontWeight: 800,
-                      fontSize: "1.1rem",
-                      color: "#fff",
-                      marginBottom: "0.4rem",
-                    }}
-                  >
+                  <div className="font-syne font-black text-lg text-white mb-2">
                     {event.title}
                   </div>
-                  <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
-                    <span
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "0.35rem",
-                        fontFamily: "'DM Sans', sans-serif",
-                        fontSize: "0.8rem",
-                        color: "rgba(255,255,255,0.45)",
-                      }}
-                    >
-                      <MapPin size={12} style={{ color: "#00D4FF" }} />
+                  <div className="flex gap-6 flex-wrap">
+                    <span className="event-detail-item">
+                      <MapPin size={12} className="event-detail-icon" />
                       {event.venue}
                     </span>
-                    <span
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "0.35rem",
-                        fontFamily: "'DM Sans', sans-serif",
-                        fontSize: "0.8rem",
-                        color: "rgba(255,255,255,0.45)",
-                      }}
-                    >
-                      <Clock size={12} style={{ color: "#00D4FF" }} />
+                    <span className="event-detail-item">
+                      <Clock size={12} className="event-detail-icon" />
                       {event.time}
                     </span>
                   </div>
                 </div>
 
                 {/* Ticket CTA */}
-                <div style={{ textAlign: "right", flexShrink: 0 }}>
+                <div className="text-right flex-shrink-0">
                   <div
+                    className="font-orbitron text-xs tracking-widest uppercase mb-2"
                     style={{
-                      fontFamily: "'Orbitron', sans-serif",
-                      fontSize: "0.6rem",
-                      letterSpacing: "0.1em",
                       color: event.status === "Sold Out"
                         ? "rgba(255,255,255,0.25)"
                         : event.status === "Limited"
                         ? "#FFD700"
                         : "#10B981",
-                      marginBottom: "0.5rem",
-                      textTransform: "uppercase",
                     }}
                   >
                     {event.status}
@@ -285,22 +185,7 @@ export default function EventsSection() {
                     <a
                       href={event.ticketUrl}
                       onClick={(e) => e.stopPropagation()}
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "0.4rem",
-                        fontFamily: "'Syne', sans-serif",
-                        fontWeight: 700,
-                        fontSize: "0.7rem",
-                        letterSpacing: "0.1em",
-                        textTransform: "uppercase",
-                        color: "#00D4FF",
-                        textDecoration: "none",
-                        border: "1px solid rgba(0,212,255,0.3)",
-                        padding: "0.5rem 1rem",
-                        borderRadius: "2px",
-                        transition: "all 0.3s ease",
-                      }}
+                      className="inline-flex items-center gap-1 font-syne font-bold text-xs tracking-widest uppercase text-cyan-400 no-underline border border-cyan-400/30 px-4 py-2 rounded-sm transition-all duration-300"
                       onMouseEnter={(e) => {
                         (e.currentTarget as HTMLElement).style.background = "rgba(0,212,255,0.1)";
                         (e.currentTarget as HTMLElement).style.boxShadow = "0 0 15px rgba(0,212,255,0.2)";
@@ -314,20 +199,7 @@ export default function EventsSection() {
                       Get Tickets
                     </a>
                   ) : (
-                    <span
-                      style={{
-                        fontFamily: "'Syne', sans-serif",
-                        fontWeight: 700,
-                        fontSize: "0.7rem",
-                        letterSpacing: "0.1em",
-                        textTransform: "uppercase",
-                        color: "rgba(255,255,255,0.2)",
-                        border: "1px solid rgba(255,255,255,0.08)",
-                        padding: "0.5rem 1rem",
-                        borderRadius: "2px",
-                        display: "inline-block",
-                      }}
-                    >
+                    <span className="inline-block font-syne font-bold text-xs tracking-widest uppercase text-white/20 border border-white/8 px-4 py-2 rounded-sm">
                       Sold Out
                     </span>
                   )}
@@ -338,14 +210,7 @@ export default function EventsSection() {
         </div>
 
         {filtered.length === 0 && (
-          <div
-            style={{
-              textAlign: "center",
-              padding: "4rem",
-              color: "rgba(255,255,255,0.3)",
-              fontFamily: "'DM Sans', sans-serif",
-            }}
-          >
+          <div className="text-center py-16 text-white/30 font-dm-sans">
             No events in this category. Check back soon.
           </div>
         )}

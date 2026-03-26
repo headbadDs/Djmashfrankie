@@ -97,9 +97,7 @@ export default function SocialSection() {
 
         {/* Social platform cards */}
         <FadeUp delay={0.1}>
-          <div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
             {socialPlatforms.map((platform) => (
               <motion.a
                 key={platform.name}
@@ -107,20 +105,7 @@ export default function SocialSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -6, scale: 1.02 }}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "2rem 1rem",
-                  borderRadius: "12px",
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(255,255,255,0.07)",
-                  textDecoration: "none",
-                  transition: "all 0.3s ease",
-                  cursor: "pointer",
-                  position: "relative",
-                  overflow: "hidden",
-                }}
+                className="social-card"
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLElement).style.borderColor = `${platform.color}44`;
                   (e.currentTarget as HTMLElement).style.background = `${platform.color}0a`;
@@ -133,62 +118,30 @@ export default function SocialSection() {
                 }}
               >
                 <div
+                  className="social-icon-box"
                   style={{
-                    width: "52px",
-                    height: "52px",
-                    borderRadius: "14px",
                     background: platform.gradient,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "#fff",
-                    marginBottom: "1rem",
                     boxShadow: `0 4px 20px ${platform.color}44`,
                   }}
                 >
                   {platform.icon}
                 </div>
-                <div
-                  style={{
-                    fontFamily: "'Orbitron', sans-serif",
-                    fontWeight: 800,
-                    fontSize: "1.4rem",
-                    color: "#fff",
-                    lineHeight: 1,
-                    marginBottom: "0.25rem",
-                  }}
-                >
+                <div className="social-followers">
                   {platform.followers}
                 </div>
-                <div
-                  style={{
-                    fontFamily: "'Syne', sans-serif",
-                    fontWeight: 700,
-                    fontSize: "0.75rem",
-                    color: "rgba(255,255,255,0.6)",
-                    marginBottom: "0.25rem",
-                  }}
-                >
+                <div className="social-platform">
                   {platform.name}
                 </div>
                 <div
-                  style={{
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontSize: "0.7rem",
-                    color: platform.color,
-                    opacity: 0.8,
-                  }}
+                  className="social-handle"
+                  style={{ color: platform.color }}
                 >
                   {platform.handle}
                 </div>
                 <ExternalLink
                   size={12}
-                  style={{
-                    position: "absolute",
-                    top: "0.75rem",
-                    right: "0.75rem",
-                    color: "rgba(255,255,255,0.2)",
-                  }}
+                  className="social-external-icon"
+                  style={{ color: "rgba(255,255,255,0.2)" }}
                 />
               </motion.a>
             ))}
@@ -198,24 +151,10 @@ export default function SocialSection() {
         {/* Instagram feed preview */}
         <FadeUp delay={0.2}>
           <div>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                marginBottom: "1.5rem",
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+            <div className="instagram-header">
+              <div className="flex items-center gap-3">
                 <Instagram size={20} style={{ color: "#E1306C" }} />
-                <span
-                  style={{
-                    fontFamily: "'Syne', sans-serif",
-                    fontWeight: 700,
-                    fontSize: "0.9rem",
-                    color: "rgba(255,255,255,0.7)",
-                  }}
-                >
+                <span className="font-syne font-bold text-sm text-white/70">
                   @djmashfrankie on Instagram
                 </span>
               </div>
@@ -223,64 +162,30 @@ export default function SocialSection() {
                 href="https://instagram.com"
                 target="https://instagram.com/?igsh=MWhvbTM3Zc2cDRicw=="
                 rel="noopener noreferrer"
-                style={{
-                  fontFamily: "'Syne', sans-serif",
-                  fontWeight: 700,
-                  fontSize: "0.7rem",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "#E1306C",
-                  textDecoration: "none",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.35rem",
-                }}
+                className="font-syne font-bold text-xs tracking-widest uppercase flex items-center gap-1"
+                style={{ color: "#E1306C" }}
               >
                 View All <ExternalLink size={12} />
               </a>
             </div>
 
-            <div
-              style={{
-                display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
-              gap: "0.5rem",
-            }}
-            >
+            <div className="instagram-grid">
               {instagramPosts.map((src, i) => (
                 <motion.div
                   key={i}
                   whileHover={{ scale: 1.05 }}
-                  style={{
-                    aspectRatio: "1",
-                    overflow: "hidden",
-                    borderRadius: "6px",
-                    cursor: "pointer",
-                    position: "relative",
-                  }}
+                  className="instagram-post"
                 >
                   <img
                     src={src}
                     alt={`Instagram post ${i + 1}`}
                     loading="lazy"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      transition: "transform 0.4s ease",
-                    }}
+                    className="gallery-image"
                   />
                   <motion.div
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      background: "linear-gradient(135deg, rgba(225,48,108,0.5), rgba(131,58,180,0.5))",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
+                    className="instagram-overlay"
                   >
                     <Instagram size={20} color="#fff" />
                   </motion.div>

@@ -37,13 +37,13 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+      className="navbar-nav"
       style={{
         position: "fixed",
         top: 0,
         left: 0,
         right: 0,
         zIndex: 1000,
-        transition: "all 0.4s ease",
         background: scrolled
           ? "rgba(5, 5, 8, 0.92)"
           : "transparent",
@@ -53,14 +53,14 @@ export default function Navbar() {
           : "none",
       }}
     >
-      <div className="max-w-5xl mx-auto px-8 h-[72px] flex items-center justify-between">
+      <div className="navbar-container">
         {/* Logo */}
         <a
           href="#"
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
           className="no-underline"
         >
-          <span className="font-orbitron font-black text-xl tracking-widest text-white">
+          <span className="navbar-logo">
             <span className="neon-blue">
               DJMASHFRANKIE
             </span>
@@ -68,16 +68,13 @@ export default function Navbar() {
         </a>
 
         {/* Desktop nav links */}
-        <div
-          className="hidden md:flex items-center gap-10"
-        >
+        <div className="navbar-links">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
               onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
-              className="nav-link"
-              style={{ textDecoration: "none" }}
+              className="navbar-link"
             >
               {link.label}
             </a>
@@ -85,12 +82,11 @@ export default function Navbar() {
         </div>
 
         {/* CTA button */}
-        <div className="hidden md:flex">
+        <div className="hidden md:block">
           <a
             href="#booking"
             onClick={(e) => { e.preventDefault(); scrollTo("#booking"); }}
-            className="btn-neon-magenta"
-            style={{ textDecoration: "none", fontSize: "0.75rem" }}
+            className="navbar-cta"
           >
             Book Now
           </a>
@@ -98,15 +94,8 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden"
+          className="navbar-mobile-menu bg-none border-none text-white cursor-pointer p-2"
           onClick={() => setMenuOpen(!menuOpen)}
-          style={{
-            background: "none",
-            border: "none",
-            color: "#fff",
-            cursor: "pointer",
-            padding: "0.5rem",
-          }}
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -127,7 +116,7 @@ export default function Navbar() {
               overflow: "hidden",
             }}
           >
-            <div style={{ padding: "1.5rem 2rem", display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+            <div className="navbar-menu-content">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
@@ -137,8 +126,7 @@ export default function Navbar() {
                     scrollTo(link.href);
                     setMenuOpen(false);
                   }}
-                  className="nav-link"
-                  style={{ textDecoration: "none", fontSize: "1rem" }}
+                  className="navbar-menu-link text-base"
                 >
                   {link.label}
                 </a>
@@ -150,8 +138,7 @@ export default function Navbar() {
                   scrollTo("#booking");
                   setMenuOpen(false);
                 }}
-                className="btn-neon-magenta"
-                style={{ textDecoration: "none", textAlign: "center" }}
+                className="btn-neon-magenta text-center"
               >
                 Book Now
               </a>

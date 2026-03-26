@@ -90,21 +90,16 @@ export default function GallerySection() {
   return (
     <section
       id="gallery"
-      style={{
-        position: "relative",
-        padding: "8rem 0",
-        background: "linear-gradient(180deg, #050508 0%, #080612 50%, #050508 100%)",
-        overflow: "hidden",
-      }}
+      className="relative py-32 bg-gradient-to-b from-void via-gray-900 to-void overflow-hidden"
     >
-      <div style={{ position: "relative", maxWidth: "1280px", margin: "0 auto", padding: "0 2rem" }}>
+      <div className="container-max container-px relative">
         {/* Header */}
         <FadeUp>
-          <div style={{ marginBottom: "4rem" }}>
+          <div className="gallery-header">
             <div className="section-tag">Gallery</div>
-            <h2 className="section-title" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", color: "#fff" }}>
+            <h2 className="section-title text-5xl">
               Behind the{" "}
-              <span style={{ color: "#FF2D78", textShadow: "0 0 20px rgba(255,45,120,0.5)" }}>
+              <span className="neon-magenta">
                 Decks
               </span>
             </h2>
@@ -113,12 +108,7 @@ export default function GallerySection() {
 
         {/* Masonry grid */}
         <FadeUp delay={0.1}>
-          <div
-            style={{
-              columns: "3 300px",
-              columnGap: "1rem",
-            }}
-          >
+          <div className="masonry-grid">
             {galleryItems.map((item, i) => (
               <motion.div
                 key={item.id}
@@ -127,33 +117,15 @@ export default function GallerySection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.06 }}
                 onClick={() => setLightboxItem(item)}
-                style={{
-                  breakInside: "avoid",
-                  marginBottom: "1rem",
-                  position: "relative",
-                  overflow: "hidden",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                  display: "block",
-                }}
-                className="group"
+                className="gallery-item"
               >
                 <img
                   src={item.src}
                   alt={item.alt}
                   loading="lazy"
+                  className="gallery-image"
                   style={{
-                    width: "100%",
                     height: item.span === "tall" ? "420px" : item.span === "wide" ? "280px" : "240px",
-                    objectFit: "cover",
-                    display: "block",
-                    transition: "transform 0.4s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.target as HTMLElement).style.transform = "scale(1.05)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.target as HTMLElement).style.transform = "scale(1)";
                   }}
                 />
 
@@ -161,28 +133,9 @@ export default function GallerySection() {
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background: "linear-gradient(135deg, rgba(0,212,255,0.3), rgba(255,45,120,0.3))",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
+                  className="gallery-overlay"
                 >
-                  <div
-                    style={{
-                      width: "48px",
-                      height: "48px",
-                      borderRadius: "50%",
-                      background: "rgba(255,255,255,0.15)",
-                      backdropFilter: "blur(8px)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "#fff",
-                    }}
-                  >
+                  <div className="w-12 h-12 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-white">
                     {item.type === "video" ? <Play size={20} /> : <ZoomIn size={20} />}
                   </div>
                 </motion.div>
@@ -200,15 +153,8 @@ export default function GallerySection() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setLightboxItem(null)}
+            className="fixed inset-0 bg-black/95 z-9000 flex items-center justify-center p-8"
             style={{
-              position: "fixed",
-              inset: 0,
-              background: "rgba(0,0,0,0.95)",
-              zIndex: 9000,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "2rem",
               backdropFilter: "blur(10px)",
             }}
           >
@@ -218,42 +164,20 @@ export default function GallerySection() {
               exit={{ scale: 0.85, opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
-              style={{
-                position: "relative",
-                maxWidth: "90vw",
-                maxHeight: "85vh",
-              }}
+              className="relative max-w-5xl max-h-[85vh]"
             >
               <img
                 src={lightboxItem.src}
                 alt={lightboxItem.alt}
+                className="max-w-full max-h-[85vh] object-contain rounded-lg"
                 style={{
-                  maxWidth: "100%",
-                  maxHeight: "85vh",
-                  objectFit: "contain",
-                  borderRadius: "8px",
                   boxShadow: "0 0 60px rgba(0,212,255,0.2)",
                 }}
               />
               <button
                 onClick={() => setLightboxItem(null)}
-                style={{
-                  position: "absolute",
-                  top: "-1rem",
-                  right: "-1rem",
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50%",
-                  background: "rgba(255,255,255,0.1)",
-                  backdropFilter: "blur(8px)",
-                  border: "1px solid rgba(255,255,255,0.2)",
-                  color: "#fff",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  transition: "all 0.2s ease",
-                }}
+                title="Close gallery"
+                className="absolute -top-4 -right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white cursor-pointer flex items-center justify-center transition-all duration-200"
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLElement).style.background = "rgba(255,45,120,0.3)";
                   (e.currentTarget as HTMLElement).style.borderColor = "#FF2D78";
