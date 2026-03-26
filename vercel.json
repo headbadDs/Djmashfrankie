@@ -3,18 +3,8 @@
   "outputDirectory": "dist",
   "installCommand": "pnpm install",
   "framework": "other",
-  "projectSettings": {
-    "buildCommand": "pnpm install && pnpm run build",
-    "installCommand": "pnpm install",
-    "outputDirectory": "dist"
-  },
   "env": {
     "NODE_ENV": "production"
   },
-  "nodeVersion": "20.x",
-  "functions": {
-    "server/index.ts": {
-      "runtime": "nodejs20.x"
-    }
-  }
+  "nodeVersion": "20.x"
 }
