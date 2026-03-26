@@ -123,18 +123,19 @@ export default function EventsSection() {
                 {/* Date block */}
                 <div className="text-center w-20 flex-shrink-0">
                   <div
-                    className="font-orbitron font-black text-3xl leading-tight"
+                    className="font-black text-3xl leading-tight"
                     style={{
+                      fontFamily: "'Orbitron', sans-serif",
                       color: typeColors[event.type] || "#00D4FF",
                       textShadow: `0 0 15px ${typeColors[event.type]}66`,
                     }}
                   >
                     {event.date.day}
                   </div>
-                  <div className="font-syne font-bold text-xs tracking-widest text-white/40 uppercase">
+                  <div className="font-bold text-xs tracking-widest text-white/40 uppercase" style={{ fontFamily: "'Syne', sans-serif" }}>
                     {event.date.month}
                   </div>
-                  <div className="font-dm-sans text-xs text-white/25">
+                  <div className="text-xs text-white/25" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                     {event.date.year}
                   </div>
                 </div>
@@ -143,8 +144,9 @@ export default function EventsSection() {
                 <div>
                   <div className="flex items-center gap-3 mb-1">
                     <span
-                      className="font-orbitron text-xs tracking-widest uppercase px-2 py-1 rounded-sm border"
+                      className="text-xs tracking-widest uppercase px-2 py-1 rounded-sm border"
                       style={{
+                        fontFamily: "'Orbitron', sans-serif",
                         color: typeColors[event.type] || "#00D4FF",
                         borderColor: `${typeColors[event.type]}44`,
                       }}
@@ -152,7 +154,7 @@ export default function EventsSection() {
                       {event.type}
                     </span>
                   </div>
-                  <div className="font-syne font-black text-lg text-white mb-2">
+                  <div className="font-black text-lg text-white mb-2" style={{ fontFamily: "'Syne', sans-serif" }}>
                     {event.title}
                   </div>
                   <div className="flex gap-6 flex-wrap">
@@ -170,8 +172,9 @@ export default function EventsSection() {
                 {/* Ticket CTA */}
                 <div className="text-right flex-shrink-0">
                   <div
-                    className="font-orbitron text-xs tracking-widest uppercase mb-2"
+                    className="text-xs tracking-widest uppercase mb-2"
                     style={{
+                      fontFamily: "'Orbitron', sans-serif",
                       color: event.status === "Sold Out"
                         ? "rgba(255,255,255,0.25)"
                         : event.status === "Limited"
@@ -185,7 +188,7 @@ export default function EventsSection() {
                     <a
                       href={event.ticketUrl}
                       onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-1 font-syne font-bold text-xs tracking-widest uppercase text-cyan-400 no-underline border border-cyan-400/30 px-4 py-2 rounded-sm transition-all duration-300"
+                      className="inline-flex items-center gap-1 font-bold text-xs tracking-widest uppercase text-cyan-400 no-underline border border-cyan-400/30 px-4 py-2 rounded-sm transition-all duration-300" style={{ fontFamily: "'Syne', sans-serif" }}
                       onMouseEnter={(e) => {
                         (e.currentTarget as HTMLElement).style.background = "rgba(0,212,255,0.1)";
                         (e.currentTarget as HTMLElement).style.boxShadow = "0 0 15px rgba(0,212,255,0.2)";
@@ -199,7 +202,7 @@ export default function EventsSection() {
                       Get Tickets
                     </a>
                   ) : (
-                    <span className="inline-block font-syne font-bold text-xs tracking-widest uppercase text-white/20 border border-white/8 px-4 py-2 rounded-sm">
+                    <span className="inline-block font-bold text-xs tracking-widest uppercase text-white/20 border border-white/8 px-4 py-2 rounded-sm" style={{ fontFamily: "'Syne', sans-serif" }}>
                       Sold Out
                     </span>
                   )}
@@ -210,7 +213,7 @@ export default function EventsSection() {
         </div>
 
         {filtered.length === 0 && (
-          <div className="text-center py-16 text-white/30 font-dm-sans">
+          <div className="text-center py-16 text-white/30" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             No events in this category. Check back soon.
           </div>
         )}

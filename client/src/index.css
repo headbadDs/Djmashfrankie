@@ -182,18 +182,6 @@
 
   /* === DJ NEXUS Custom Components === */
 
-  .font-orbitron {
-    font-family: 'Orbitron', sans-serif;
-  }
-
-  .font-syne {
-    font-family: 'Syne', sans-serif;
-  }
-
-  .font-dm-sans {
-    font-family: 'DM Sans', sans-serif;
-  }
-
   /* Glassmorphism card */
   .glass-card {
     background: rgba(255, 255, 255, 0.04);
@@ -373,7 +361,7 @@
   .text-sm-light { @apply text-sm text-white/40; }
   .text-sm-lighter { @apply text-sm text-white/45; }
   .text-xs-cyan { @apply text-xs text-cyan-400; }
-  .text-label { @apply font-syne font-bold text-xs tracking-widest uppercase text-white/30; }
+  .text-label { @apply font-bold text-xs tracking-widest uppercase text-white/30; font-family: 'Syne', sans-serif; }
   
   /* Border & divider */
   .border-top-light { @apply border-t border-white/5; }
@@ -389,7 +377,7 @@
   
   /* Special button styles */
   .btn-newsletter {
-    @apply w-11 h-11 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 border-0 text-white flex-center flex-shrink-0 transition-all duration-300;
+    @apply w-11 h-11 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 border-0 text-white flex items-center justify-center flex-shrink-0 transition-all duration-300;
     box-shadow: 0 0 15px rgba(0,212,255,0.3);
   }
   
@@ -400,7 +388,7 @@
   
   /* Social icon card */
   .social-icon-btn {
-    @apply w-9 h-9 rounded-lg bg-white/5 border border-white/8 flex-center text-white/50 no-underline transition-all duration-300;
+    @apply w-9 h-9 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center text-white/50 no-underline transition-all duration-300;
   }
   
   /* Link hover effects */
@@ -545,7 +533,9 @@
   }
 
   /* Nav link underline effect */
-  .nav-link {
+  .nav-link,
+  .navbar-link,
+  .navbar-menu-link {
     position: relative;
     color: rgba(255, 255, 255, 0.7);
     font-family: 'Syne', sans-serif;
@@ -556,7 +546,9 @@
     transition: color 0.3s ease;
   }
 
-  .nav-link::after {
+  .nav-link::after,
+  .navbar-link::after,
+  .navbar-menu-link::after {
     content: '';
     position: absolute;
     bottom: -4px;
@@ -567,11 +559,15 @@
     transition: width 0.3s ease;
   }
 
-  .nav-link:hover {
+  .nav-link:hover,
+  .navbar-link:hover,
+  .navbar-menu-link:hover {
     color: #fff;
   }
 
-  .nav-link:hover::after {
+  .nav-link:hover::after,
+  .navbar-link:hover::after,
+  .navbar-menu-link:hover::after {
     width: 100%;
   }
 
@@ -699,15 +695,18 @@
   }
 
   .social-followers {
-    @apply font-orbitron font-black text-xl text-white leading-none mb-1;
+    @apply font-black text-xl text-white leading-none mb-1;
+    font-family: 'Orbitron', sans-serif;
   }
 
   .social-platform {
-    @apply font-syne font-bold text-xs text-white/60 mb-1;
+    @apply font-bold text-xs text-white/60 mb-1;
+    font-family: 'Syne', sans-serif;
   }
 
   .social-handle {
-    @apply font-dm-sans text-xs opacity-80;
+    @apply text-xs opacity-80;
+    font-family: 'DM Sans', sans-serif;
   }
 
   .social-external-icon {
@@ -739,7 +738,8 @@
   }
 
   .event-filter-btn {
-    @apply px-4 py-2 rounded-full font-syne font-bold text-xs tracking-widest uppercase border transition-all duration-300;
+    @apply px-4 py-2 rounded-full font-bold text-xs tracking-widest uppercase border transition-all duration-300;
+    font-family: 'Syne', sans-serif;
     border-color: rgba(139, 92, 246, 0.3);
     color: rgba(255, 255, 255, 0.6);
   }
@@ -757,7 +757,7 @@
   }
 
   .event-item {
-    @apply relative border-l-3 border-left-purple pl-6 py-6 px-6 bg-white/2 rounded-r-lg transition-all duration-300;
+    @apply relative border-l-3 pl-6 py-6 px-6 bg-white/2 rounded-r-lg transition-all duration-300;
     border-color: rgba(139, 92, 246, 0.3);
   }
 
@@ -768,11 +768,13 @@
   }
 
   .event-time {
-    @apply font-orbitron text-xs text-purple-400 mb-2;
+    @apply text-xs text-purple-400 mb-2;
+    font-family: 'Orbitron', sans-serif;
   }
 
   .event-title {
-    @apply font-syne font-bold text-white mb-2;
+    @apply font-bold text-white mb-2;
+    font-family: 'Syne', sans-serif;
   }
 
   .event-details {
@@ -793,7 +795,8 @@
   }
 
   .gallery-title {
-    @apply font-syne font-black text-white mb-4;
+    @apply font-black text-white mb-4;
+    font-family: 'Syne', sans-serif;
   }
 
   .gallery-title-accent {
@@ -836,7 +839,8 @@
   }
 
   .navbar-logo {
-    @apply font-orbitron font-black text-lg tracking-widest text-white;
+    @apply font-black text-lg tracking-widest text-white;
+    font-family: 'Orbitron', sans-serif;
   }
 
   .navbar-links {
@@ -844,11 +848,12 @@
   }
 
   .navbar-link {
-    @apply nav-link;
+    /* Styles inherited from grouped selector above */
   }
 
   .navbar-cta {
-    @apply hidden md:block px-6 py-2 rounded-lg font-syne font-bold text-sm tracking-widest uppercase border border-cyan-400 text-cyan-400 transition-all duration-300;
+    @apply hidden md:block px-6 py-2 rounded-lg font-bold text-sm tracking-widest uppercase border border-cyan-400 text-cyan-400 transition-all duration-300;
+    font-family: 'Syne', sans-serif;
   }
 
   .navbar-cta:hover {
@@ -864,7 +869,7 @@
   }
 
   .navbar-menu-link {
-    @apply nav-link;
+    /* Styles inherited from grouped selector above */
   }
 
   /* Neon purple for purple-themed components */

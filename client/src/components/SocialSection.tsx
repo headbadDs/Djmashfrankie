@@ -154,7 +154,7 @@ export default function SocialSection() {
             <div className="instagram-header">
               <div className="flex items-center gap-3">
                 <Instagram size={20} style={{ color: "#E1306C" }} />
-                <span className="font-syne font-bold text-sm text-white/70">
+                <span className="font-bold text-sm text-white/70" style={{ fontFamily: "'Syne', sans-serif" }}>
                   @djmashfrankie on Instagram
                 </span>
               </div>
@@ -162,8 +162,8 @@ export default function SocialSection() {
                 href="https://instagram.com"
                 target="https://instagram.com/?igsh=MWhvbTM3Zc2cDRicw=="
                 rel="noopener noreferrer"
-                className="font-syne font-bold text-xs tracking-widest uppercase flex items-center gap-1"
-                style={{ color: "#E1306C" }}
+                className="font-bold text-xs tracking-widest uppercase flex items-center gap-1"
+                style={{ fontFamily: "'Syne', sans-serif", color: "#E1306C" }}
               >
                 View All <ExternalLink size={12} />
               </a>

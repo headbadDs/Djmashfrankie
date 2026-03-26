@@ -44,10 +44,10 @@ export default function Footer() {
         <div className="grid-4-cols mb-16">
           {/* Brand column */}
           <div>
-            <div className="font-orbitron font-black text-2xl tracking-widest text-white mb-4">
+            <div className="font-black text-2xl tracking-widest text-white mb-4" style={{ fontFamily: "'Orbitron', sans-serif" }}>
               <span className="neon-blue">DJMASHFRANKIE</span>
             </div>
-            <p className="font-dm-sans text-sm-light leading-relaxed mb-6 max-w-xs">
+            <p className="text-sm-light leading-relaxed mb-6 max-w-xs" style={{ fontFamily: "'DM Sans', sans-serif" }}>
               World-class DJ delivering premium nightlife experiences across the globe. 
               From intimate sets to festival stages.
             </p>
@@ -136,7 +136,7 @@ export default function Footer() {
               ].map((c, i) => (
                 <div
                   key={i}
-                  className="flex-items-center gap-2 font-dm-sans text-sm text-white/45"
+                  className="flex-items-center gap-2 text-sm text-white/45" style={{ fontFamily: "'DM Sans', sans-serif" }}
                 >
                   <span className="text-cyan-400 flex-shrink-0">{c.icon}</span>
                   {c.text}
@@ -148,7 +148,7 @@ export default function Footer() {
           {/* Newsletter */}
           <div>
             <div className="text-label mb-5">Stay in the Loop</div>
-            <p className="font-dm-sans text-sm text-white/40 leading-relaxed mb-4">
+            <p className="text-sm text-white/40 leading-relaxed mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
               Get exclusive updates on new mixes, events, and behind-the-scenes content.
             </p>
             <form onSubmit={handleNewsletter} className="flex gap-2">
@@ -172,10 +172,10 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-gap-3 flex items-center justify-between flex-wrap gap-4">
-          <div className="font-dm-sans text-xs text-white/25">
+          <div className="text-xs text-white/25" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             © {new Date().getFullYear()} DJMASHFRANKIE. All rights reserved.
           </div>
-          <div className="font-orbitron text-xs tracking-widest uppercase text-white/15">
+          <div className="text-xs tracking-widest uppercase text-white/15" style={{ fontFamily: "'Orbitron', sans-serif" }}>
             Feel the Beat. Live the Night.
           </div>
           <div className="flex gap-6">
@@ -184,7 +184,7 @@ export default function Footer() {
                 key={link}
                 href="#"
                 onClick={(e) => e.preventDefault()}
-                className="font-dm-sans text-xs text-white/25 no-underline transition-colors duration-300 hover:text-white/60"
+                className="text-xs text-white/25 no-underline transition-colors duration-300 hover:text-white/60" style={{ fontFamily: "'DM Sans', sans-serif" }}
               >
                 {link}
               </a>
